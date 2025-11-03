@@ -1,18 +1,18 @@
-# 🚖 Rideshare Data Engineering Pipeline — Databricks + Spark + dbt
+#  Rideshare Data Engineering Pipeline — Databricks + Spark + dbt
 
 ![Project Flow Diagram](project_flow.png)
-> 🖼️ *Replace the above with your flow diagram image (full path or relative link). Example: `/assets/flow_diagram.png`*
+>  *Replace the above with your flow diagram image (full path or relative link). Example: `/assets/flow_diagram.png`*
 
 ---
 
-## 📘 Project Overview
+##  Project Overview
 
 This project implements an **end-to-end Data Engineering pipeline** for a rideshare analytics platform.  
 It ingests **raw CSV data** — including **customers, drivers, vehicles, trips, locations, and payments** — into **Databricks** using **Spark Structured Streaming**, organizes it into the **Medallion Architecture** (Bronze, Silver, Gold), and builds **star-schema models with dbt** for downstream **BI and ML** workloads.
 
 ---
 
-## 🧱 Architecture Overview
+##  Architecture Overview
 
 | Layer | Description | Technology |
 |-------|--------------|-------------|
@@ -24,7 +24,7 @@ It ingests **raw CSV data** — including **customers, drivers, vehicles, trips,
 
 ---
 
-## ⚙️ Technologies Used
+##  Technologies Used
 
 - **Apache Spark (Structured Streaming)** — for incremental ingestion and transformations  
 - **Databricks** — for orchestration, notebooks, and Delta Lake  
@@ -36,7 +36,7 @@ It ingests **raw CSV data** — including **customers, drivers, vehicles, trips,
 
 ---
 
-## 🧩 Dataset Entities
+##  Dataset Entities
 
 | Dataset | Description | Key Fields |
 |----------|--------------|------------|
@@ -49,22 +49,22 @@ It ingests **raw CSV data** — including **customers, drivers, vehicles, trips,
 
 ---
 
-## 🪶 Medallion Architecture Implementation
+##  Medallion Architecture Implementation
 
-### 🥉 Bronze — Ingestion Layer
+###  Bronze — Ingestion Layer
 - Reads **CSV data from landing zone** (S3 / DBFS).  
 - Uses **Spark Structured Streaming** to continuously append data.  
 - Adds metadata fields (`_ingest_ts`, `_source_file`).  
 - Stored as **Delta Tables** under `analytics_bronze` catalog.
 
-### 🥈 Silver — Transformation Layer
+###  Silver — Transformation Layer
 - Cleans and normalizes the Bronze data.  
 - Converts datatypes, standardizes timestamps.  
 - Deduplicates records based on business keys.  
 - Adds audit columns (`processed_ts`, `batch_id`).  
 - Stored in **`analytics_silver`** catalog.
 
-### 🥇 Gold — Analytics Layer
+###  Gold — Analytics Layer
 - Builds **fact** and **dimension** tables via **dbt** incremental models.  
 - Fact table: `fact_trips` combines trips, payments, and driver data.  
 - Dimensions: `dim_customers`, `dim_drivers`, `dim_vehicles`, `dim_locations`.  
@@ -73,7 +73,7 @@ It ingests **raw CSV data** — including **customers, drivers, vehicles, trips,
 
 ---
 
-## 🧠 Example Data Flow
+##  Data Flow
 
 ```text
 CSV Files (Raw)
