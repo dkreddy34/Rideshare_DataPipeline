@@ -1,7 +1,7 @@
 #  Rideshare Data Engineering Pipeline — Databricks + Spark + dbt
 
 ![Project Flow Diagram](project_flow.png)
->  *Replace the above with your flow diagram image (full path or relative link). Example: `/assets/flow_diagram.png`*
+
 
 ---
 
